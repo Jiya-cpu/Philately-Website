@@ -1,0 +1,67 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="profile-page">
+  <body>
+    <!-- Profile Section -->
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <!-- Profile Picture -->
+        <img src="<%= profile.profilePicture.url %>" alt="Profile Image" class="rounded-circle" style="width: 150px; height: 150px;">
+      </div>
+      <div class="col-12 text-center">
+        <!-- Displaying User's Name with the new class -->
+        <h2 class="profile-name"><%= profile.name %></h2>
+      </div>
+      <div class="col-12 text-center">
+        <!-- Badges -->
+        <% profile.badges.forEach(badge => { %>
+          <img src="<%= badge.image %>" alt="<%= badge.name %>" style="width: 50px; height: 50px;">
+        <% }) %>
+      </div>
+      <div class="col-12 text-center">
+        <!-- Location -->
+        <h5><%= profile.location %></h5>
+        <!-- Bio -->
+        <p><%= profile.bio %></p>
+      </div>
+    </div>
+    
+    <hr>
+
+    <!-- Collections Section -->
+    <div class="row">
+      <% Object.keys(profile.collections).forEach(collectionName => { %>
+        <div class="col-md-4">
+          <h5 class="collection-title"><%= collectionName %></h5> <!-- Apply the class here -->
+          <div class="card">
+            <img src="<%= profile.collections[collectionName][0].image %>" class="card-img-top" alt="<%= profile.collections[collectionName][0].name %>">
+            <div class="row no-gutters">
+              <% profile.collections[collectionName].slice(1).forEach(item => { %>
+                <div class="col-6">
+                  <img src="<%= item.image %>" class="img-fluid" alt="<%= item.name %>">
+                </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <hr>
+
+    <!-- Blog Posts Section -->
+    <div class="row">
+      <div class="col-12">
+        <h5 class="section-title">Blogposts</h5>
+        <% profile.blogPosts.forEach(post => { %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="blog-title"><%= post.title %></h5> <!-- Apply the class here -->
+              <p class="card-text"><%= post.excerpt %></p>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</div>
