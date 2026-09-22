@@ -16,7 +16,3 @@
 - **Database**: MongoDB for managing ancillary data and user information.
 - **Others**: RESTful APIs for data access and integration.
 
-## **Installation**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sharma-anushka/indian-philately-hub.git
